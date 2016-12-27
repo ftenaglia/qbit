@@ -346,7 +346,7 @@ public class CorsResponseDecorator implements HttpResponseDecorator {
         }
 
         // Section 6.2.5
-        if (!corsSupport.getAllowedHeaders().contains(accessControlRequestMethod)) {
+        if (!corsSupport.getAllowedMethods().contains(RequestMethod.valueOf(accessControlRequestMethod.toUpperCase(Locale.ENGLISH)))) {
             handleInvalidCORS(request, response);
             return false;
         }
